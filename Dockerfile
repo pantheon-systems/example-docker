@@ -1,9 +1,9 @@
-FROM quay.io/getpantheon/alpine:latest
+FROM quay.io/getpantheon/alpine:3.14-curl
 
 # configure environment
 ENV BASEDIR /opt/example-docker
-ENV PACKAGE='python'
-ENV DOWNLOAD_PACKAGE='py-pip python-dev build-base'
+ENV PACKAGE='python3'
+ENV DOWNLOAD_PACKAGE='py-pip python3-dev build-base'
 
 # apk install
 RUN apk update --no-cache && \
@@ -24,5 +24,5 @@ COPY . $BASEDIR
 WORKDIR $BASEDIR
 
 # run app
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
 CMD ["app.py"]
